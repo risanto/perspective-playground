@@ -32,5 +32,17 @@ Vue.createApp({
         this.box[key] = newVal;
       }
     },
+    async copy() {
+      const text = `transform:
+        perspective(${this.box.perspective}px) 
+        rotateX(${this.box.rotateX}deg) 
+        rotateY(${this.box.rotateY}deg) 
+        rotateZ(${this.box.rotateZ}deg)
+        `;
+
+      await navigator.clipboard.writeText(text);
+
+      alert("CSS style is copied to the clipboard");
+    },
   },
 }).mount("#app");
